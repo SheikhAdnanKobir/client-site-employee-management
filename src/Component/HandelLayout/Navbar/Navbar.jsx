@@ -1,35 +1,34 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+// import React, { use } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import 'flowbite';
-
+import logo from '../../../assets/logo1.svg'
 
 const Navbar = () => {
+
+    const location = useLocation();
+
+    // const handleLogout = () => {
+    //     // Logic for handling logout
+    // }
+
     return (
         <div>
-            {/* <NavLink to="/">Home</NavLink>
-            <NavLink to="/dashboard">Dashboard</NavLink>
-            <NavLink to="/contact">Contact</NavLink> */}
-
-
-
-
-            <nav class="bg-lime-600">
-                <div class=" flex  items-center justify-between mx-auto p-3">
-                    <span href="" class="flex items-center justify-center bg-orange-500 gap-0.5" >
-                        <Link to={"/"}><img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" /></Link>
-                        <span class=" text-2xl font-semibold " className='text-black font-black'>Flowbite</span>
+            <nav class="">
+                <div class=" flex  items-center justify-between mx-auto p-3 bg-lime-50/40">
+                    <span href="" >
+                        <Link to={"/"}><img src={logo} class="h-7" alt="Flowbite Logo" /></Link>
                     </span>
 
                     <div class="" >
-                        <ul class="flex justify-between gap-3 text-sm font-semibold  border border-gray-100 rounded-lg bg-gray-50">
+                        <ul class="flex justify-between gap-5 text-sm font-semibold  border border-gray-100 rounded-lg bg-green-100 py-1 px-2">
                             <li>
-                                <NavLink to={"/"} class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</NavLink>
+                                <NavLink to={"/"} className={location.pathname === "/"?"bg-lime-500 py-1.5 px-2 text-white rounded-full":"text-lime-800"} class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/dashboard"} class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Dashboard</NavLink>
+                                <NavLink to={"/dashboard"} className={location.pathname === "/dashboard"?"bg-lime-500 py-1.5 px-2 text-white rounded-full":"text-lime-800"} class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Dashboard</NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/contact"} class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</NavLink>
+                                <NavLink to={"/contact"} className={location.pathname === "/contact"?"bg-lime-500 py-1.5 px-2 text-white rounded-full":"text-lime-800"} class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</NavLink>
                             </li>
 
                         </ul>
