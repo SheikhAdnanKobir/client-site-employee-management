@@ -7,6 +7,10 @@ import Contact from '../Component/HandelLayout/Body/Contact/Contact';
 import Employee from '../Component/HandelLayout/Body/Dashboard/Employee/Employee';
 import Admin from '../Component/HandelLayout/Body/Dashboard/Admin/Admin';
 import Hr from '../Component/HandelLayout/Body/Dashboard/Hr/Hr';
+import 'flowbite';
+import Signin from '../Component/HandelLayout/Body/Authentication/Signup';
+import Login from '../Component/HandelLayout/Body/Authentication/Login';
+import Handelath from '../Component/HandelLayout/Body/Authentication/Handelath';
 
 
 const Router = createBrowserRouter([
@@ -40,12 +44,13 @@ const Router = createBrowserRouter([
                 path: "contact",
                 Component: Contact
 
-            },
-            {
-                path: "contact",
-                Component: Contact
             }
+
         ]
+    },
+    {
+        path: "/authentication",
+        Component: Handelath
     }
 ]);
 
