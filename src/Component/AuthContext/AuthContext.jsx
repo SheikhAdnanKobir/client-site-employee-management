@@ -1,10 +1,10 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
-import {  createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { auth } from '../../Firebase.init';
 import Swal from 'sweetalert2';
 import PublicAxios from '../Hooks/PublicAxios';
 
-export const authContextProvider = createContext(null);
+export const AuthContextProvider=createContext(null)
 
 const AuthContext = ({ children }) => {
 
@@ -13,6 +13,8 @@ const AuthContext = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const [nav, setNav] = useState(null);
+
+    const [mobileSize,setMobileSize]=useState(false)
 
     const publicAxiosurl = PublicAxios();
 
@@ -24,12 +26,14 @@ const AuthContext = ({ children }) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 const user = result.user;
+                console.log(user);
+                
                 updateProfile(user, {
                     displayName: name,
                     photoURL: photoURL
-
-
                 })
+                console.log(user);
+
                 // React toastify
                 const Toast = Swal.mixin({
                     toast: true,
@@ -48,7 +52,7 @@ const AuthContext = ({ children }) => {
                 })
 
                     .then(() => {
-                        console.log('Profile updated successfully');
+                        // console.log('Profile updated successfully');2
                     }).catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
@@ -106,9 +110,9 @@ const AuthContext = ({ children }) => {
                 if (errorCode || errorMessage) {
                     const Toast = Swal.mixin({
                         toast: true,
-                        position: "top-end",
+                        position: "top",
                         showConfirmButton: false,
-                        timer: 3000,
+                        timer: 1500,
                         timerProgressBar: true,
                         didOpen: (toast) => {
                             toast.onmouseenter = Swal.stopTimer;
@@ -126,39 +130,22 @@ const AuthContext = ({ children }) => {
 
     // set observer
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user)
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser)
+            if (currentUser) {
+                const userInfo = { email: currentUser.email };
+                PublicAxios.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                            setLoading(false)
+                        }
+                    })
+            }
+            else {
+                localStorage.removeItem('access-token');
                 setLoading(false)
             }
-            else {
-                setUser(null)
-            }
-
-            if (user?.email) {
-                const currentUser = { email: user.email }
-                console.log(currentUser);
-
-                // console.log(currentUser);
-                publicAxiosurl.post('/jwt', currentUser)
-                    .then(res => {
-                        console.log(res.data);
-                        // localStorage.setItem("accessToken", res.data.token)
-                    })
-                    .catch(err => {
-                        console.error("JWT fetch failed", err);
-                    });
-            }
-            else {
-                publicAxiosurl.post("/logout", {}, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        console.log(res.data);
-                        // localStorage.removeItem("accessToken")
-                    })
-            }
-
 
         });
         return () => {
@@ -255,17 +242,18 @@ const AuthContext = ({ children }) => {
         singInGoogle,
         signInEmailAndPassword,
         handleSignOut,
-        nav, setNav
+        nav, setNav,
+        mobileSize,setMobileSize
     };
 
     console.log(nav, "nav in auth context");
-    
+
 
     return (
         <div>
-            <authContextProvider.Provider value={routing}>
+            <AuthContextProvider.Provider value={routing}>
                 {children}
-            </authContextProvider.Provider>
+            </AuthContextProvider.Provider>
 
         </div>
     );
