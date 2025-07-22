@@ -19,10 +19,8 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (
-                clickRef.current &&
-                !clickRef.current.contains(event.target)
-            ) {
+            if (clickRef.current && !clickRef.current.contains(event.target)) 
+            {
                 setHiddenis(false);
             }
         };
