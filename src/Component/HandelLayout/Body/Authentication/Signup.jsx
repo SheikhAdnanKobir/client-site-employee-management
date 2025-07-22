@@ -33,7 +33,19 @@ const Signup = () => {
     const submitForm = async (data) => {
         // console.log(data, user);
 
-        
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
+
+        if (!regex.test(data.password)) {
+            // Show an error message
+            Swal.fire({
+                position: "top-left",
+                icon: "error",
+                title: "Password mest contain at least 6 characters, including (A-Z), (a-z), (0-9), and special characters.",
+                showConfirmButton: false,
+                timer: 5000
+            });
+            return;
+        }
 
         const imgeFile = { image: data.image[0] };
         const response = await axiosPublicUrl.post(img_hosting_Api,
