@@ -18,6 +18,9 @@ const Login = () => {
         signInEmailAndPassword(data.email, data.password)
     }
 
+
+    // Redirect to dashboard if user is logged in
+    // console.log(user);
     if (user) {
         navigate("/dashboard")
     }
