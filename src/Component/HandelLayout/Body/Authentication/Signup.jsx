@@ -47,7 +47,12 @@ const Signup = () => {
         // console.log(imageUrl);
 
 
-        
+        if (response.data.success) {
+            const photoUrl = response.data.data.display_url;
+
+            signUpWithEmailPassword(data.email, data.password, data.name, photoUrl, data.role, data.designation)
+
+        }
 
     }
 

@@ -20,7 +20,6 @@ const Login = () => {
 
 
     // Redirect to dashboard if user is logged in
-    // console.log(user);
     if (user) {
         navigate("/dashboard")
     }
