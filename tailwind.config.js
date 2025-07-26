@@ -3,12 +3,13 @@ export default {
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
+        "./node_modules/flowbite/**/*.js", // Flowbite HTML components
+        "./node_modules/flowbite-react/**/*.js", // Flowbite React components
     ],
     theme: {
         extend: {
             screens: {
-                'xs': '400px',
-                'mp': '1000px'
+                xs: '400px',
             },
         },
     },
