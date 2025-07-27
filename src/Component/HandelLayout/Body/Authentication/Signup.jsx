@@ -89,16 +89,16 @@ const Signup = () => {
                     </div>
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your name</label>
-                        <input type="text" {...register("name")} class=" border border-gray-300 text-gray-900 text-sm rounded-lg   block w-full p-1.5 " placeholder="name@company.com" required />
+                        <input type="text" {...register("name")} class=" border border-lime-500 hover:border-2 hover:border-lime-500 text-gray-900 text-sm rounded-lg   block w-full p-1.5 " placeholder="name@company.com" required />
                     </div>
                     <div class="grid grid-cols-3 gap-2 justify-center items-center  md:gap-5">
                         <div>
                             <label for="image" class="block  text-sm font-medium text-gray-900 ">Your photo</label>
-                            <input type="file" {...register("image")} accept='image/*' class=" border border-gray-300 text-gray-900 text-sm rounded-lg hover:border-lime-500 cursor-pointer block w-full p-1.5 " required />
+                            <input type="file" {...register("image")} accept='image/*' class=" border border-lime-500 hover:border-2 text-gray-900 text-sm rounded-lg hover:border-lime-500 cursor-pointer block w-full p-1.5 " required />
                         </div>
                         <div>
                             <label for="role" class="block mb-2 text-sm font-medium text-gray-900 ">Your role</label>
-                            <select {...register("role")} class=" border cursor-pointer border-gray-300 text-gray-900 text-sm rounded-lg   block w-full p-1.5 " required>
+                            <select {...register("role")} class=" border cursor-pointer border-lime-500 hover:border-2 hover:border-lime-500 text-gray-900 text-sm rounded-lg   block w-full p-1.5 " required>
                                 <option value="" disabled selected>Select your role</option>
                                 <option value="employee">Employee</option>
                                 <option value="employee">Hr</option>
@@ -108,7 +108,7 @@ const Signup = () => {
                             <label for="designation" class="block mb-2 text-sm font-medium text-gray-900">Your designation</label>
                             <select
                                 {...register("designation")}
-                                class="border border-gray-300 cursor-pointer text-gray-900 text-sm rounded-lg block w-full p-1.5"
+                                class="border border-lime-500 hover:border-2 hover:border-lime-500 cursor-pointer text-gray-900 text-sm rounded-lg block w-full p-1.5"
                                 required
                             >
                                 <option value="" disabled selected>Select designation</option>
@@ -122,11 +122,11 @@ const Signup = () => {
                     </div>
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
-                        <input type="email" {...register("email")} class=" border border-gray-300 text-gray-900 text-sm rounded-lg   block w-full p-1.5 " placeholder="name@company.com" required />
+                        <input type="email" {...register("email")} class=" border border-lime-500 hover:border-2 hover:border-lime-500 text-gray-900 text-sm rounded-lg   block w-full p-1.5 " placeholder="name@company.com" required />
                     </div>
                     <div className='relative'>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Your password</label>
-                        <input type={show ? "text" : "password"} {...register("password")} placeholder="Enter Password" class=" border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-1.5 " required />
+                        <input type={show ? "text" : "password"} {...register("password")} placeholder="Enter Password" class=" border border-lime-500 hover:border-2 hover:border-lime-500 text-gray-900 text-sm rounded-lg block w-full p-1.5 " required />
                         <div className='absolute top-9 right-4'>
                             {
                                 show ? <button type='button' onClick={() => setShow(!show)}><FaEye></FaEye></button> : <button type='button' onClick={() => setShow(!show)}><FaEyeSlash></FaEyeSlash></button>
@@ -136,7 +136,7 @@ const Signup = () => {
                     <div class="flex items-start">
                         <div class="flex items-start">
                             <div class="flex items-center h-5">
-                                <input type="checkbox" class="w-4 h-4 cursor-pointer border border-gray-300 rounded-sm bg-gray-50" required />
+                                <input type="checkbox" class="w-4 h-4 cursor-pointer border border-lime-500 hover:border-2 hover:border-lime-500 rounded-sm bg-gray-50" required />
                             </div>
                             <label class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
                         </div>

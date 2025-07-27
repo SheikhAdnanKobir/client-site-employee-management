@@ -9,12 +9,14 @@ import Hr from '../Component/HandelLayout/Body/Dashboard/Hr/Hr';
 import 'flowbite';
 import Handelath from '../Component/HandelLayout/Body/Authentication/Handelath';
 import 'flowbite';
+import PageError from "../PageError";
 
 
 const Router = createBrowserRouter([
     {
         path: "/",
         Component: Handellayout,
+        errorElement: <PageError />,
         children: [
             {
                 index: true,
