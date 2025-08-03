@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from 'react';
 import { auth } from '../../Firebase.init.js';
 import Swal from 'sweetalert2';
 import PublicAxios from '../Hooks/PublicAxios';
+import moment from 'moment/moment.js';
 
 export const AuthContextProvider = createContext(null)
 
@@ -46,6 +47,8 @@ const AuthContext = ({ children }) => {
                 admin: false,
                 isVerified: false,
                 bank_account_no: "",
+                salary:"",
+                date:moment().format('MMMM Do YYYY, h:mm:ss a')
             }
             await publicAxiosUrl.post("/users", addUser);
 
@@ -240,7 +243,9 @@ const AuthContext = ({ children }) => {
                                 designation: "",
                                 admin: false,
                                 isVerified: false,
-                                bank_account_no: ""
+                                bank_account_no: "",
+                                salary:"",
+                                date:moment().format('MMMM Do YYYY, h:mm:ss a')
                             }
                             publicAxiosUrl.post("/users", addUser)
                         }

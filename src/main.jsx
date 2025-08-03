@@ -5,8 +5,12 @@ import 'flowbite';
 import Router from './Router/Router.jsx';
 import AuthContext from './Component/AuthContext/AuthContext.jsx';
 import { RouterProvider } from 'react-router-dom';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import 'flowbite';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
 
 const queryClient = new QueryClient()
 
